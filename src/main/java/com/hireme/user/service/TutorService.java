@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TutorService {
-    private final TutorRepository tutorRepository;
-
-    @Autowired
-    public TutorService(TutorRepository tutorRepository) {
-        this.tutorRepository = tutorRepository;
-    }
-
-    public List<TutorEntity> findTutorByName(String name) {
-        return tutorRepository.findTutorByName(name);
-    }
+public interface TutorService {
+    //original (from ZY)
+//    private final TutorRepository tutorRepository;
+//    @Autowired
+//    public TutorService(TutorRepository tutorRepository) {
+//        this.tutorRepository = tutorRepository;
+//    }
+//    public List<TutorEntity> findTutorByName(String name) {
+//        return tutorRepository.findTutorByName(name);
+    List<TutorEntity> findTutorByName(String name);
+//    }
 
 }

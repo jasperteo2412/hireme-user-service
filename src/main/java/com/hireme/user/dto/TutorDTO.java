@@ -1,5 +1,6 @@
 package com.hireme.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.Date;
@@ -11,9 +12,16 @@ import java.util.Date;
 @ToString
 public class TutorDTO {
 
+    @JsonProperty("tutorId")
     private int tutorId;
+
+    @JsonProperty("tutorName")
     private String tutorName;
+
+    @JsonProperty("tutorBio")
     private String tutorBio;
+
+    @JsonProperty("tutorLevel")
     private String tutorLevel;
 
 }
