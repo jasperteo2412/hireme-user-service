@@ -18,7 +18,7 @@ public class TutorController {
         this.tutorService = tutorService;
     }
 
-    @GetMapping("/findByName/{name}")
+    @GetMapping("/getTutorByName/{name}")
     public List<TutorEntity> findTutorByName(@PathVariable String name) {
         name = name.replace("+", " ");
         return tutorService.findTutorByName(name);
