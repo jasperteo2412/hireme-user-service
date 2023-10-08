@@ -1,8 +1,11 @@
 package com.hireme.user.controller;
 
+
 import com.hireme.user.entity.TutorEntity;
 import com.hireme.user.service.TutorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +21,11 @@ public class TutorController {
         this.tutorService = tutorService;
     }
 
-    @GetMapping("/getTutorByName/{name}")
-    public List<TutorEntity> findTutorByName(@PathVariable String name) {
-        name = name.replace("+", " ");
-        return tutorService.findTutorByName(name);
 
+    @GetMapping("/findByName/{tutorName}")
+    public ResponseEntity<List<TutorEntity>> findTutorByName(@PathVariable String tutorName) {
+        tutorName = tutorName.replace("+", " ");
+        List<TutorEntity> tutorEntities = tutorService.findTutorByName(tutorName);
+        return new ResponseEntity<>(tutorEntities, HttpStatus.OK);
     }
 }

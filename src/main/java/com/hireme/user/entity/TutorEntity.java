@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name="user_table")
+@Table(name="tutor_table")
 public class TutorEntity {
 
     @Id
@@ -25,7 +25,7 @@ public class TutorEntity {
     private String tutorName;
 
     @Column(name = "tutor_bio")
-    private Date tutorBio;
+    private String tutorBio;
 
     @Column(name = "tutor_level")
     private String tutorLevel;

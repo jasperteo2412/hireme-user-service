@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface TutorRepository extends JpaRepository<TutorEntity, Integer> {
     @Query("SELECT u FROM TutorEntity u WHERE u.tutorName = ?1")
-    List<TutorEntity> findTutorByName(String name);
+    List<TutorEntity> findTutorByName(String tutorName);
 }
