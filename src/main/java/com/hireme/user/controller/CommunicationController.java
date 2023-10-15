@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CommunicationController {
 
     static final Logger logger = Logger.getLogger(CommunicationController.class.getName());
