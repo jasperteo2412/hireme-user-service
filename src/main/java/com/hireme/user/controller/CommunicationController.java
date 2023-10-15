@@ -6,6 +6,8 @@ import com.hireme.user.dto.ResponseBodyDTO;
 import com.hireme.user.entity.MessagesEntity;
 import com.hireme.user.exception.MessageException;
 import com.hireme.user.service.CommunicationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ public class CommunicationController {
     private CommunicationService communicationService;
 
     @PostMapping(value = "/v1/messages")
+    @Operation(summary = "Send message to other users")
+    @ApiResponse(responseCode = "200", description = "Message sent successfully")
     private ResponseBodyDTO postMessages(
             @RequestHeader("USER-ID") String userId,
             @RequestBody MessagesEntity newMessage
@@ -68,6 +72,8 @@ public class CommunicationController {
     }
 
     @GetMapping(value = "/v1/messages")
+    @Operation(summary = "Get all logged in user messages")
+    @ApiResponse(responseCode = "200", description = "Message retrieved successfully")
     private ResponseBodyDTO getMessages(@RequestHeader("USER-ID") String userId){
 
         logger.log(Level.FINE, "GET getMessages");
@@ -97,25 +103,28 @@ public class CommunicationController {
         return response;
     }
 
-    @GetMapping(value = "/v1/messages/check")
-    private ResponseBodyDTO getUnreadMessagesCount(@RequestHeader("USER-ID") String userId){
+    @PutMapping(value = "/v1/messages")
+    @Operation(summary = "Update message read indicator")
+    @ApiResponse(responseCode = "200", description = "Message updated successfully")
+    private ResponseBodyDTO updateMessages(
+            @RequestHeader("USER-ID") String userId,
+            @RequestBody List<MessagesEntity> updateMessage){
 
-        logger.log(Level.FINE, "GET getUnreadMessagesCount");
+        logger.log(Level.FINE, "PUT updateMessages");
 
         ResponseBodyDTO response = new ResponseBodyDTO();
         ErrorDTO error = new ErrorDTO();
 
         try{
-
-            logger.log(Level.FINE, "GET getUnreadMessagesCount: Retrieving unread messages count...");
-            Long result = communicationService.getUnreadMessagesCount(userId);
+            logger.log(Level.FINE, "GET updateMessages: Updating messages...");
+            String result = communicationService.updateMessages(updateMessage);
             response.setData(result);
             response.setError(null);
             response.setStatus(HttpStatus.OK.value());
             response.setError(null);
 
         } catch(MessageException e){
-            logger.log(Level.INFO, "GET getUnreadMessagesCount: Exception error encountered");
+            logger.log(Level.INFO, "GET updateMessages: Exception error encountered");
             error.setError("Communication Service Error");
             error.setException("Message Exception");
             error.setMessage(e.getMessage());
@@ -124,7 +133,38 @@ public class CommunicationController {
             response.setError(error);
         }
 
-        logger.log(Level.FINE, "GET getUnreadMessagesCount: completed");
+        logger.log(Level.FINE, "PUT updateMessages: completed");
         return response;
     }
+
+//    @GetMapping(value = "/v1/messages/check")
+//    private ResponseBodyDTO getUnreadMessagesCount(@RequestHeader("USER-ID") String userId){
+//
+//        logger.log(Level.FINE, "GET getUnreadMessagesCount");
+//
+//        ResponseBodyDTO response = new ResponseBodyDTO();
+//        ErrorDTO error = new ErrorDTO();
+//
+//        try{
+//
+//            logger.log(Level.FINE, "GET getUnreadMessagesCount: Retrieving unread messages count...");
+//            Long result = communicationService.getUnreadMessagesCount(userId);
+//            response.setData(result);
+//            response.setError(null);
+//            response.setStatus(HttpStatus.OK.value());
+//            response.setError(null);
+//
+//        } catch(MessageException e){
+//            logger.log(Level.INFO, "GET getUnreadMessagesCount: Exception error encountered");
+//            error.setError("Communication Service Error");
+//            error.setException("Message Exception");
+//            error.setMessage(e.getMessage());
+//            error.setErrorCode(e.getErrorCode());
+//            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+//            response.setError(error);
+//        }
+//
+//        logger.log(Level.FINE, "GET getUnreadMessagesCount: completed");
+//        return response;
+//    }
 }

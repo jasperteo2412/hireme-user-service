@@ -44,7 +44,13 @@ public class CommunicationServiceImpl implements CommunicationService {
         return response;
     }
 
-    @Override
+    public String updateMessages(List<MessagesEntity> updateMessage) {
+        for(int i = 0; i < updateMessage.size(); i++){
+            communicationRepository.save(updateMessage.get(i));
+        }
+        return "update_success";
+    }
+
     public Long getUnreadMessagesCount(String userId) {
         Long result = communicationRepository.countBySentToAndReadIndicator(userId, "N");
 
