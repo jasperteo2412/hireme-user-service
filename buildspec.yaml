@@ -13,5 +13,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/aws-build/app-to-deploy.jar
+    - target/aws-build/**/*
   discard-paths: yes
