@@ -14,4 +14,3 @@ phases:
 artifacts:
   files:
     - target/aws-build/**/*
-  discard-paths: yes
