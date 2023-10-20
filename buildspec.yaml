@@ -13,5 +13,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - '**/app-to-deploy.jar/*'
+    - '**/*'
   base-directory: 'target/aws-build'

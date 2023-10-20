@@ -162,7 +162,7 @@
 									<fileset dir="./aws" />
 								</copy>
 								<replace file="${project.build.directory}/aws-build/Procfile" token="@jarname@" value="${buildName}"/>
-								<zip compress="false" destfile="${project.build.directory}/aws-build/app-to-deploy.jar" basedir="${project.build.directory}/aws-build"/>
+<!--								<zip compress="false" destfile="${project.build.directory}/aws-build/app-to-deploy.jar" basedir="${project.build.directory}/aws-build"/>-->
 							</tasks>
 						</configuration>
 						<goals>

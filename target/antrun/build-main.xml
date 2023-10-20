@@ -7,6 +7,5 @@
     <fileset dir="./aws"/>
   </copy>
   <replace file="/Users/jasperteo/Documents/GitHub/hireme-user-service/target/aws-build/Procfile" value="${buildName}" token="@jarname@"/>
-  <zip basedir="/Users/jasperteo/Documents/GitHub/hireme-user-service/target/aws-build" destfile="/Users/jasperteo/Documents/GitHub/hireme-user-service/target/aws-build/app-to-deploy.jar" compress="false"/>
 </target>
 </project>
