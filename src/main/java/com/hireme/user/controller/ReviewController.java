@@ -1,6 +1,7 @@
 package com.hireme.user.controller;
 
 
+import com.hireme.user.entity.RatingEntity;
 import com.hireme.user.entity.ReviewEntity;
 import com.hireme.user.service.ReviewService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -63,6 +65,13 @@ public class ReviewController {
         ReviewEntity reviewRequest = reviewService.getReviewEntityByName(tutorName);
         reviewService.deleteTutorReviewByName(reviewRequest);
         return "Successfully delete tutor review";
+    }
+
+    @GetMapping(value="/review/getAllReviews")
+    @Operation(summary="Get all reviews")
+    @ApiResponse(responseCode = "200", description = "Get all reviews successfully")
+    public List<ReviewEntity> getAllReviews() {
+        return reviewService.getAllReviews();
     }
 
 }

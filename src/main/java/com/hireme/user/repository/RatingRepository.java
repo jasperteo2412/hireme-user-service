@@ -9,6 +9,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface RatingRepository extends CrudRepository<RatingEntity, Integer>  {
     @Query("SELECT r.rating FROM RatingEntity r WHERE r.name = :name")
     Float getTutorRatingByName(@Param("name") String name);
@@ -20,4 +22,7 @@ public interface RatingRepository extends CrudRepository<RatingEntity, Integer> 
 
     @Query("SELECT r FROM RatingEntity r WHERE r.name = :name")
     RatingEntity findByName(String name);
+
+    @Query("SELECT r FROM RatingEntity r")
+    List<RatingEntity> getAllRatings();
 }

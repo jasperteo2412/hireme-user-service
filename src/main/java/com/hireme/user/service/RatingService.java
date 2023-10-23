@@ -8,6 +8,8 @@ import com.hireme.user.entity.ReviewEntity;
 import com.hireme.user.repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public interface RatingService {
     public Float getTutorRatingByName(String name);
 
@@ -18,4 +20,6 @@ public interface RatingService {
     public void deleteTutorReviewByName(RatingEntity ratingEntity);
 
     public RatingEntity getRatingEntityByName(String name);
+
+    List<RatingEntity> getAllRatings();
 }

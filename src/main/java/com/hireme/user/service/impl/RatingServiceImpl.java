@@ -8,6 +8,8 @@ import com.hireme.user.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RatingServiceImpl implements RatingService {
 
@@ -39,5 +41,9 @@ public class RatingServiceImpl implements RatingService {
 
     public RatingEntity getRatingEntityByName(String name) {
         return ratingRepository.findByName(name);
+    }
+
+    public List<RatingEntity> getAllRatings() {
+        return ratingRepository.getAllRatings();
     }
 }

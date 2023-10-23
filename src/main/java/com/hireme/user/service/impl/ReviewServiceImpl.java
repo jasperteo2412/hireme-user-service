@@ -6,6 +6,8 @@ import com.hireme.user.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
@@ -36,6 +38,10 @@ public class ReviewServiceImpl implements ReviewService {
 
     public ReviewEntity getReviewEntityByName(String name) {
         return reviewRepository.findByName(name);
+    }
+
+    public List<ReviewEntity> getAllReviews() {
+        return reviewRepository.getAllReviews();
     }
 
 }

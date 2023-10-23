@@ -9,6 +9,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
     @Query("SELECT r.review FROM ReviewEntity r WHERE r.name = :name")
     String getTutorReviewByName(@Param("name") String name);
@@ -20,4 +22,7 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
 
     @Query("SELECT r FROM ReviewEntity r WHERE r.name = :name")
     ReviewEntity findByName(String name);
+
+    @Query("SELECT r FROM ReviewEntity r")
+    List<ReviewEntity> getAllReviews();
 }
