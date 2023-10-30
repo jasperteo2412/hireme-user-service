@@ -26,3 +26,4 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
     @Query("SELECT r FROM ReviewEntity r")
     List<ReviewEntity> getAllReviews();
 }
+

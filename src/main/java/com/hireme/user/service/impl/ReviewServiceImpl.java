@@ -43,5 +43,5 @@ public class ReviewServiceImpl implements ReviewService {
     public List<ReviewEntity> getAllReviews() {
         return reviewRepository.getAllReviews();
     }
-
 }
+
