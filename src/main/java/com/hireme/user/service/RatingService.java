@@ -17,7 +17,7 @@ public interface RatingService {
 
     public void updateTutorRating(RatingEntity ratingEntity);
 
-    public void deleteTutorReviewByName(RatingEntity ratingEntity);
+    public void deleteTutorRatingByName(RatingEntity ratingEntity);
 
     public RatingEntity getRatingEntityByName(String name);
 

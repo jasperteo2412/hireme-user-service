@@ -26,3 +26,4 @@ public interface RatingRepository extends CrudRepository<RatingEntity, Integer> 
     @Query("SELECT r FROM RatingEntity r")
     List<RatingEntity> getAllRatings();
 }
+

@@ -66,7 +66,7 @@ public class RatingController {
     @ApiResponse(responseCode = "200", description = "Delete tutor rating successfully")
     public String deleteTutorRatingByName(@PathVariable String tutorName) {
         RatingEntity ratingRequest = ratingService.getRatingEntityByName(tutorName);
-        ratingService.deleteTutorReviewByName(ratingRequest);
+        ratingService.deleteTutorRatingByName(ratingRequest);
         return "Successfully delete tutor rating";
     }
 

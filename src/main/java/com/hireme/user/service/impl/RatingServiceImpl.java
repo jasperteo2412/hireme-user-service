@@ -35,7 +35,7 @@ public class RatingServiceImpl implements RatingService {
         ratingRepository.updateTutorRating(newRatingForTutor, tutorName);
     }
 
-    public void deleteTutorReviewByName(RatingEntity ratingEntity) {
+    public void deleteTutorRatingByName(RatingEntity ratingEntity) {
         ratingRepository.delete(ratingEntity);
     }
 
@@ -47,3 +47,4 @@ public class RatingServiceImpl implements RatingService {
         return ratingRepository.getAllRatings();
     }
 }
+
