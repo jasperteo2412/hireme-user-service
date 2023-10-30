@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -65,8 +66,15 @@ public class RatingController {
     @ApiResponse(responseCode = "200", description = "Delete tutor rating successfully")
     public String deleteTutorRatingByName(@PathVariable String tutorName) {
         RatingEntity ratingRequest = ratingService.getRatingEntityByName(tutorName);
-        ratingService.deleteTutorReviewByName(ratingRequest);
+        ratingService.deleteTutorRatingByName(ratingRequest);
         return "Successfully delete tutor rating";
+    }
+
+    @GetMapping(value="/rating/getAllRatings")
+    @Operation(summary="Get all ratings")
+    @ApiResponse(responseCode = "200", description = "Get all ratings successfully")
+    public List<RatingEntity> getAllRatings() {
+        return ratingService.getAllRatings();
     }
 
 

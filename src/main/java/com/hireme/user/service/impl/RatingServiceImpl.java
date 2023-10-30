@@ -8,6 +8,8 @@ import com.hireme.user.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RatingServiceImpl implements RatingService {
 
@@ -33,11 +35,15 @@ public class RatingServiceImpl implements RatingService {
         ratingRepository.updateTutorRating(newRatingForTutor, tutorName);
     }
 
-    public void deleteTutorReviewByName(RatingEntity ratingEntity) {
+    public void deleteTutorRatingByName(RatingEntity ratingEntity) {
         ratingRepository.delete(ratingEntity);
     }
 
     public RatingEntity getRatingEntityByName(String name) {
         return ratingRepository.findByName(name);
+    }
+
+    public List<RatingEntity> getAllRatings() {
+        return ratingRepository.getAllRatings();
     }
 }
