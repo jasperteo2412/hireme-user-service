@@ -28,7 +28,7 @@ public class CommunicationController {
     @PostMapping(value = "/v1/messages")
     @Operation(summary = "Send message to other users")
     @ApiResponse(responseCode = "200", description = "Message sent successfully")
-    private ResponseBodyDTO postMessages(
+    public ResponseBodyDTO postMessages(
             @RequestHeader("USER-ID") String userId,
             @RequestBody MessagesEntity newMessage
             ){
@@ -75,7 +75,7 @@ public class CommunicationController {
     @GetMapping(value = "/v1/messages")
     @Operation(summary = "Get all logged in user messages")
     @ApiResponse(responseCode = "200", description = "Message retrieved successfully")
-    private ResponseBodyDTO getMessages(@RequestHeader("USER-ID") String userId){
+    public ResponseBodyDTO getMessages(@RequestHeader("USER-ID") String userId){
 
         logger.log(Level.FINE, "GET getMessages");
 
@@ -107,7 +107,7 @@ public class CommunicationController {
     @PutMapping(value = "/v1/messages")
     @Operation(summary = "Update message read indicator")
     @ApiResponse(responseCode = "200", description = "Message updated successfully")
-    private ResponseBodyDTO updateMessages(
+    public ResponseBodyDTO updateMessages(
             @RequestHeader("USER-ID") String userId,
             @RequestBody List<MessagesEntity> updateMessage){
 
