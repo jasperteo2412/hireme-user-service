@@ -25,7 +25,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/v1/users/list")
-    @Operation(summary = "Send message to other users")
+    @Operation(summary = "Retrieve user name for chats")
     @ApiResponse(responseCode = "200", description = "Message sent successfully")
     private ResponseBodyDTO getUser(
             @RequestHeader("USER-ID") String userId,
